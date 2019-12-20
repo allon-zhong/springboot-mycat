@@ -16,4 +16,8 @@ public interface UserMapper {
     int insert(User user);
     @Select("select * from user")
     List<User> selectAll();
+    @Select("select * from user where id = #{id}")
+    User selectById(String id);
+    @Select("select * from user where id> #{id}")
+    List<User> rangeById(String id);
 }

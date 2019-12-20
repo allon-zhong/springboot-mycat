@@ -19,11 +19,20 @@ public class UserController {
     private UserMapper userMapper;
     @RequestMapping("/save")
     public String save(User user){
+        System.out.println("收到的请求是:"+user.toString());
         userMapper.insert(user);
         return "保存成功";
     }
     @RequestMapping("/list")
     public List<User> list(){
         return userMapper.selectAll();
+    }
+    @RequestMapping("/getById")
+    public User getById(String id){
+        return userMapper.selectById(id);
+    }
+    @RequestMapping("/rangeById")
+    public List<User> rangeById(String id){
+        return userMapper.rangeById(id);
     }
 }
